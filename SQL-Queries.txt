@@ -1,0 +1,39 @@
+Module 3 - Mini Project #6 - WRITING SQL QUERIES
+
+STEP 4 
+
+
+1.   
+SELECT * FROM `mod3-miniproj6-shopping`.orders ORDER BY order_date DESC;
+
+
+2.
+SELECT * FROM `mod3-miniproj6-shopping`.products WHERE product_category_id = 2;
+
+
+3.
+SELECT * FROM `mod3-miniproj6-shopping`.products ORDER BY price DESC LIMIT 3;
+
+
+4.
+SELECT
+  product_categories.id,
+  product_categories.`Title`,
+  COUNT(products.id) AS Total
+FROM
+  product_categories
+LEFT JOIN products ON  product_categories.id = products.product_category_id
+GROUP BY product_categories.id,product_categories.`Title`;
+
+
+5.
+SELECT
+  products.id,
+  products.`Title`,
+  COUNT(orders.id) AS Total
+FROM
+  products
+LEFT JOIN orders ON  products.id = orders.product_id 
+GROUP BY products.id,products.`Title`
+ORDER BY Total DESC
+LIMIT 3; 
